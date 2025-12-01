@@ -814,3 +814,366 @@ a:active {
 .back-to-top.show {
   display: flex;
 }
+
+/* CUSTOM.CSS - Simple Version with Fixes */
+/* Made by: [Your Name] */
+
+/* ========================================== */
+/* PART 1: TWO SIMPLE ANIMATIONS */
+/* ========================================== */
+
+/* Animation 1: Simple fade in */
+@keyframes simpleFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animation 2: Simple bounce */
+@keyframes simpleBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Animation 3: Simple spin (for loader) */
+@keyframes simpleSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================== */
+/* PART 2: CSS-ONLY LOADER (Fixed Version) */
+/* ========================================== */
+
+/* Preloader container - FIXED */
+#pageLoader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease;
+}
+
+/* Hide the loader when done */
+#pageLoader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Simple spinner */
+.simple-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #2563eb;
+  border-radius: 50%;
+  animation: simpleSpin 1s linear infinite;
+}
+
+/* Loading text */
+.loading-text {
+  margin-top: 20px;
+  color: #2563eb;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+/* ========================================== */
+/* PART 3: ACCESSIBILITY - REDUCE MOTION */
+/* ========================================== */
+
+/* Stop animations if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .simple-spinner {
+    animation: none !important;
+    border-top-color: #ccc;
+  }
+}
+
+/* ========================================== */
+/* PART 4: APPLY ANIMATIONS TO PAGE */
+/* ========================================== */
+
+/* Make sections fade in */
+.section {
+  animation: simpleFadeIn 1s ease-in;
+}
+
+/* Make buttons bounce on hover */
+.btn-primary:hover {
+  animation: simpleBounce 0.5s ease;
+}
+
+/* Make portfolio cards bounce on hover */
+.portfolio-card:hover {
+  animation: simpleBounce 0.5s ease;
+}
+
+/* ========================================== */
+/* PART 5: SIMPLE DECORATIVE ELEMENTS */
+/* ========================================== */
+
+/* Simple decorative circle */
+.decorative-circle {
+  width: 100px;
+  height: 100px;
+  background: #2563eb;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+/* Simple decorative triangle */
+.decorative-triangle {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid #2563eb;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  opacity: 0.1;
+  z-index: -1;
+  animation: simpleSpin 20s linear infinite;
+}
+
+/* ========================================== */
+/* PART 6: SIMPLE GRADIENT BACKGROUND */
+/* ========================================== */
+
+/* Simple animated gradient for hero */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    #667eea,
+    #764ba2,
+    #667eea
+  );
+  animation: gradientMove 5s linear infinite;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+@keyframes gradientMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ========================================== */
+/* PART 7: SIMPLE HOVER EFFECTS */
+/* ========================================== */
+
+/* Simple image zoom on hover */
+img {
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+
+/* Simple link underline */
+a {
+  position: relative;
+  text-decoration: none;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #2563eb;
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* ========================================== */
+/* PART 8: SIMPLE SCROLL EFFECT */
+/* ========================================== */
+
+/* Simple back to top button animation */
+.scroll-top {
+  transition: all 0.3s ease;
+}
+
+.scroll-top:hover {
+  transform: scale(1.1);
+}
+
+/* ========================================== */
+/* PART 9: RESPONSIVE FIXES */
+/* ========================================== */
+
+/* Hide decorative shapes on mobile */
+@media (max-width: 768px) {
+  .decorative-circle,
+  .decorative-triangle {
+    display: none;
+  }
+  
+  /* Slower animations on mobile */
+  .hero::before {
+    animation-duration: 10s;
+  }
+}
+
+/* ========================================== */
+/* PART 10: PRINT STYLES */
+/* ========================================== */
+
+/* Hide animations when printing */
+@media print {
+  #pageLoader,
+  .decorative-circle,
+  .decorative-triangle,
+  .hero::before {
+    display: none !important;
+  }
+  
+  * {
+    animation: none !important;
+  }
+}
+
+/* ========================================== */
+/* LOADER STYLES - WITH SMOOTH TRANSITION */
+/* ========================================== */
+#simplePageLoader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: all 0.8s ease; /* Slower transition */
+}
+
+#simplePageLoader .loader-spinner {
+  width: 70px; /* Bigger */
+  height: 70px; /* Bigger */
+  border: 6px solid #f0f0f0; /* Thicker */
+  border-top: 6px solid #2563eb; /* Thicker */
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite; /* Slower spin */
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#simplePageLoader .loader-text {
+  margin-top: 20px;
+  color: #2563eb;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* ========================================== */
+/* LOADER STYLES - SIMPLE */
+/* ========================================== */
+#simplePageLoader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#simplePageLoader .loader-spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid #e0e0e0;
+  border-top: 5px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#simplePageLoader .loader-text {
+  margin-top: 15px;
+  color: #2563eb;
+  font-family: 'Roboto', sans-serif;
+}
+
+#simplePageLoader.hide-loader {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Force hide if needed */
+#simplePageLoader[style*="display: none"] {
+  display: none !important;
+}
+
+body.loaded #simplePageLoader {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
